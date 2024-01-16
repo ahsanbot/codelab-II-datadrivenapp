@@ -190,7 +190,7 @@ def create_welcome_window():
     root.title("Welcome")
     root.geometry("350x400")
 
-    background_image = Image.open("D:\Ahsan\API\codelab-II-datadrivenapp/harrypotter/bg1.jpg")  
+    background_image = Image.open("codelab-II-datadrivenapp/harrypotter/bg1.jpg")  
     # Resize the image using Image.resize(width, height)
     background_image = background_image.resize((350, 400))
     background_photo = ImageTk.PhotoImage(background_image)
