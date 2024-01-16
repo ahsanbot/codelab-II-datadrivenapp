@@ -48,7 +48,7 @@ def fetch_and_display_image(image_url, image_label):
                 image_data.thumbnail((200, 200))
                 image = ImageTk.PhotoImage(image_data)
                 image_label.config(image=image, bg="lightblue")
-                image_label.image = image  # Keep a reference!
+                image_label.image = image  
         except Exception as e:
             print(f"An error occurred: {e}")
             image_label.config(image='', text='Image not available')
@@ -190,7 +190,7 @@ def create_welcome_window():
     root.title("Welcome")
     root.geometry("350x400")
 
-    background_image = Image.open("harrypotter/bg1.jpg")  # Replace with the actual path to your image
+    background_image = Image.open("harrypotter/bg1.jpg")  
     # Resize the image using Image.resize(width, height)
     background_image = background_image.resize((350, 400))
     background_photo = ImageTk.PhotoImage(background_image)
@@ -209,7 +209,7 @@ def create_welcome_window():
 
 def open_main(root):
     root.withdraw()
-    # Call the main function to open the main GUI
+   
     main(root)
 
 if __name__ == "__main__":
