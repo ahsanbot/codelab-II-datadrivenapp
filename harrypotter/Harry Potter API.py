@@ -4,13 +4,15 @@ import requests
 import io
 import random
 
+# Function to fetch potions from the API
 def fetch_potions():
     response = requests.get('https://api.potterdb.com/v1/potions')
     if response.status_code == 200:
         return response.json()['data']
     else:
         return []
-
+    
+# Function to fetch characters from the API
 def fetch_characters():
     response = requests.get('https://api.potterdb.com/v1/characters')
     if response.status_code == 200:
@@ -18,6 +20,7 @@ def fetch_characters():
     else:
         return []
 
+# Function to fetch books from the API
 def fetch_books():
     response = requests.get('https://api.potterdb.com/v1/books')
     if response.status_code == 200:
@@ -25,6 +28,7 @@ def fetch_books():
     else:
         return []
 
+# Function to fetch spells from the API
 def fetch_spells():
     response = requests.get('https://api.potterdb.com/v1/spells')
     if response.status_code == 200:
@@ -32,6 +36,7 @@ def fetch_spells():
     else:
         return []
 
+# Function to fetch movies from the API
 def fetch_movies():
     response = requests.get('https://api.potterdb.com/v1/movies')
     if response.status_code == 200:
@@ -39,6 +44,7 @@ def fetch_movies():
     else:
         return []
 
+# Function to fetch and display an image from a URL
 def fetch_and_display_image(image_url, image_label):
     if image_url:
         try:
@@ -55,6 +61,7 @@ def fetch_and_display_image(image_url, image_label):
     else:
         image_label.config(image='', text='No image URL provided')
 
+# Function to display potion details
 def display_potion(potion, image_label, details_label):
     potion_attributes = potion['attributes']
     potion_details = f"Name: {potion_attributes['name']}\n" \
@@ -67,12 +74,14 @@ def display_potion(potion, image_label, details_label):
     image_url = potion_attributes.get('image')
     fetch_and_display_image(image_url, image_label)
 
+# Function to fetch and display a random potion
 def fetch_random_potion(image_label, details_label):
     potions = fetch_potions()
     if potions:
         random_potion = random.choice(potions)
         display_potion(random_potion, image_label, details_label)
 
+# Function to display character details
 def display_character(character, image_label, details_label):
     character_attributes = character['attributes']
     character_details = f"Name: {character_attributes.get('name', 'N/A')}\n" \
@@ -84,12 +93,14 @@ def display_character(character, image_label, details_label):
     image_url = character_attributes.get('image')
     fetch_and_display_image(image_url, image_label)
 
+# Function to fetch and display a random character
 def fetch_random_character(image_label, details_label):
     characters = fetch_characters()
     if characters:
         random_character = random.choice(characters)
         display_character(random_character, image_label, details_label)
 
+# Function to display book details
 def display_book(book, image_label, details_label):
     book_attributes = book['attributes']
     book_details = f"Title: {book_attributes.get('title', 'Unknown Title')}\n" \
@@ -102,12 +113,14 @@ def display_book(book, image_label, details_label):
 
     fetch_and_display_image(image_url, image_label)
 
+# Function to fetch and display a random book
 def fetch_random_book(image_label, details_label):
     books = fetch_books()
     if books:
         random_book = random.choice(books)
         display_book(random_book, image_label, details_label)
 
+# Function to display spell details
 def display_spell(spell, image_label, details_label):
     spell_attributes = spell['attributes']
     spell_details = f"Name: {spell_attributes['name']}\n" \
@@ -118,12 +131,14 @@ def display_spell(spell, image_label, details_label):
     image_url = spell_attributes.get('image')
     fetch_and_display_image(image_url, image_label)
 
+# Function to fetch and display a random spell
 def fetch_random_spell(image_label, details_label):
     spells = fetch_spells()
     if spells:
         random_spell = random.choice(spells)
         display_spell(random_spell, image_label, details_label)
 
+# Function to display movie details
 def display_movie(movie, image_label, details_label):
     movie_attributes = movie['attributes']
     movie_details = f"Title: {movie_attributes.get('title', 'N/A')}\n" \
@@ -134,12 +149,14 @@ def display_movie(movie, image_label, details_label):
     image_url = movie_attributes.get('poster')
     fetch_and_display_image(image_url, image_label)
 
+# Function to fetch and display a random movie
 def fetch_random_movie(image_label, details_label):
     movies = fetch_movies()
     if movies:
         random_movie = random.choice(movies)
         display_movie(random_movie, image_label, details_label)
 
+# Main function to create the GUI
 def main(root):
     main_window = tk.Toplevel(root)
     main_window.title("Harry Potter Random Information Generator")
@@ -184,7 +201,7 @@ def main(root):
 
     main_window.mainloop()
 
-
+# Function to create the welcome window
 def create_welcome_window():
     root = tk.Tk()
     root.title("Welcome")
@@ -206,7 +223,8 @@ def create_welcome_window():
     start_button.pack(pady=(150, 10))
 
     root.mainloop()
-
+    
+# Function to open the main window
 def open_main(root):
     root.withdraw()
    
