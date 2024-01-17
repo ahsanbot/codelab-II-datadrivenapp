@@ -195,7 +195,7 @@ def create_welcome_window():
     background_image = background_image.resize((350, 400))
     background_photo = ImageTk.PhotoImage(background_image)
 
-    # Create a label with the background image
+    # label with the background image
     background_label = tk.Label(root, image=background_photo)
     background_label.place(relwidth=1, relheight=1)
 
